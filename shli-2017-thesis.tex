@@ -1,0 +1,313 @@
+%%% Template File for Use with the hmcthesis.cls.
+%%%
+%%% C.M. Connelly <cmc@math.hmc.edu>
+%%%
+%%% Version 5.1
+
+%%% Preamble.
+\documentclass[mathematics]{hmcthesis}
+
+%%% Additional packages.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{lipsum}
+\usepackage{pst-node}
+\usepackage{tikz-cd} 
+\usepackage{tikz}
+\usepackage{epigraph}
+\usepackage{xcolor}
+
+%%% Additional Libraries
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+
+
+%%% Load hyperref.
+\usepackage[breaklinks=true,
+  bookmarks,
+  pdfpagemode=UseOutlines,
+  pdfpagelayout=SinglePage]{hyperref}
+
+\title{Tropical Derivation of Cohomology Ring of Heavy/Light Hassett Spaces}
+\author{Shiyue Li}
+\advisor{Dagan Karp}
+\reader{Dhruv Ranganathan}
+\thesisyear{2017} 
+\thesismonth{May} 
+
+% Common Math Symbols
+\newcommand{\dD}{\partial \mathbb{D}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[1]{\left< #1 \right>}
+\newcommand{\blf}{ {[\,\cdot\, , \,\cdot\,]} }
+\newcommand{\pc}{\perp_C}
+\newcommand{\vecspan}[1]{\operatorname{span}\{#1\}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\gal}{\operatorname{Gal}}
+\newcommand{\gr}{\operatorname{Gr}}
+\newcommand{\val}{\operatorname{val}}
+\newcommand{\emb}{\operatorname{Emb}}
+\newcommand{\aut}{\operatorname{Aut}}
+\newcommand{\fix}{\operatorname{Fix}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\chr}{\operatorname{char}}
+\newcommand{\trop}{\operatorname{trop}}
+\newcommand{\rat}{\operatorname{Rat}}
+\newcommand{\pr}{\operatorname{proj}}
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\pos}{\operatorname{pos}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\bw}{\bigwedge}
+\renewcommand{\Pr}{\operatorname{Pr}}
+\newcommand{\hookuparrow}{\mathrel{\rotatebox[origin=c]{90}{$\hookrightarrow$}}}
+
+% Blackboard Font
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\I}{\mathbb{I}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+
+% Calligraphy Font
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\calc}{\mathcal{C}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\cale}{\mathcal{E}}
+\newcommand{\calf}{\mathcal{F}}
+\newcommand{\calg}{\mathcal{G}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\cali}{\mathcal{I}}
+\newcommand{\calj}{\mathcal{J}}
+\newcommand{\calk}{\mathcal{K}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calm}{\mathcal{M}}
+\newcommand{\caln}{\mathcal{N}}
+\newcommand{\calo}{\mathcal{O}}
+\newcommand{\calp}{\mathcal{P}}
+\newcommand{\calq}{\mathcal{Q}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\calt}{\mathcal{T}}
+\newcommand{\calu}{\mathcal{U}}
+\newcommand{\calv}{\mathcal{V}}
+\newcommand{\calw}{\mathcal{W}}
+\newcommand{\calx}{\mathcal{X}}
+\newcommand{\caly}{\mathcal{Y}}
+\newcommand{\calz}{\mathcal{Z}}
+
+% Script Font
+\newcommand\sca{\mathscr A}
+\newcommand\scb{\mathscr B}
+\newcommand\scc{\mathscr C}
+\newcommand\scd{\mathscr D}
+\newcommand\sce{\mathscr E}
+\newcommand\scf{\mathscr F}
+\newcommand\scg{\mathscr G}
+\newcommand\sch{\mathscr H}
+\newcommand\sci{\mathscr I}
+\newcommand\scj{\mathscr J}
+\newcommand\sck{\mathscr K}
+\newcommand\scl{\mathscr L}
+\newcommand\scm{\mathscr M}
+\newcommand\scn{\mathscr N}
+\newcommand\sco{\mathscr O}
+\newcommand\scp{\mathscr P}
+\newcommand\scq{\mathscr Q}
+\newcommand\scs{\mathscr S}
+\newcommand\sct{\mathscr T}
+\newcommand\scu{\mathscr U}
+\newcommand\scv{\mathscr V}
+\newcommand\scw{\mathscr W}
+\newcommand\scx{\mathscr X}
+\newcommand\scy{\mathscr Y}
+\newcommand\scz{\mathscr Z}
+
+%%  Matrices
+\newcommand{\minimatrix}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4 \end{bmatrix}  }
+\newcommand{\megamatrix}[9]{\begin{bmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{bmatrix}  }
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\twovector}[2]{\begin{bmatrix} #1\\#2 \end{bmatrix} }
+\newcommand{\threevector}[3]{\begin{bmatrix} #1\\#2\\#3 \end{bmatrix} }
+
+\renewcommand{\vec}[1]{{\bf #1}}
+
+\newcommand{\due}[1]{\vspace{-0.2in}\begin{center}\textsc{In class \underline{#1}} \end{center}\medskip }
+
+\linespread{1.1}
+\setlength{\parskip}{0.5ex plus 0.5ex minus 0.2ex}
+
+\let\oldenumerate=\enumerate
+	\def\enumerate{
+	\oldenumerate
+	\setlength{\itemsep}{5pt}
+	}
+\let\olditemize=\itemize
+	\def\itemize{
+	\olditemize
+	\setlength{\itemsep}{5pt}
+	}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{warning}{Warning}[section]
+\newtheorem{questions}{Question}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{example}{Example}[section]
+
+\newtheorem{rem1}[theorem]{Remark}
+\newenvironment{remark}{\begin{rem1}\em}{\end{rem1}}
+
+\newcommand{\Depth}{2}
+\newcommand{\Height}{2}
+\newcommand{\Width}{2}
+
+\hyphenation{ap-pen-dix wer-ther-i-an}
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+%%% Abstract
+
+\begin{abstract}
+    The cohomology of moduli spaces of curves has been extensively studied in classical algebraic geometry. 
+    The emergent field of tropical geometry gives new views and combinatorial tools for treating these classical problems. 
+	In particular, we study the cohomology of heavy/light Hassett spaces, moduli spaces of heavy/light weighted stable curves,
+	denoted as $\calm_{g, w}$ for a particular genus $g$
+	and a weight vector $w \in (0, 1]^n$
+	using tropical geometry.
+	We survey and build on the work of \citet{Cavalieri2014},
+	which proved that tropical compactification 
+    is a \textit{wonderful} compactification of the complement of hyperplane arrangement 
+	for these heavy/light Hassett spaces.
+	For $g = 0$, we want to find the tropicalization of 
+	$\calm_{0, w}$,
+	a polyhedral complex parametrizing leaf-labeled metric trees 
+	that can be thought of as Bergman fan,
+	which furthermore creates a toric variety $X_{\Sigma}$.
+	We use the presentation of $\overline{\calm}_{0,w}$ as a tropical compactification associated to an explicit Bergman fan, to give a concrete presentation of the cohomology. 
+\end{abstract}
+
+\tableofcontents 
+\listoffigures
+\listoftables
+
+%%% Acknowledgments.
+\begin{acknowledgments}
+	I want to thank Professor Dagan Karp 
+	for his always heartwarming support, 
+	inspirations both inside and outside this project,
+	which motivate me to become a better person 
+	and learn more math.
+
+	Also want to thank Dhruv Ranganathan 
+	for suggesting this wonderful project, 
+	walking me through very important ideas in the projects
+	and giving me incredibly helpful geometric intuitions on this problem.
+
+	I owe thanks to Professors Stephan Garcia, Ghassan Sarkis, Nicholas Pippenger, Erica Flapan, Francis Su, Jon Jacobsen
+	for inviting me to some of the most elegant parts of mathematics and for encouraging me to pursue advanced math studies. 
+	
+	I thank Melody Chan for spending time 
+	the combinatorial aspects of this project to me 
+	during my very brief visit at Brown University
+	and for her expository papers for clarifying many concepts involved.
+
+	I want to thank Aaron Landesman for talking to me about new concepts,
+    ideas, books, and techniques, for sharing maths, puzzles, music, and for being an amazing mathematician, a great mentor and an kind friend.
+
+	I thank Hope Yu and Max Hlavaceck for being such wonderful friends to start my tropical geometry journey with
+	and for filling my undergraduate math courses with fun and sparkles.
+
+	I am deeply grateful to my family 
+	whose shared passion brings me endless joy; also I am grateful to my friends 
+	whose wittiness, love 
+	and support over the Mudd years have made me grow so much. 
+	I thank Ping Wu, Jinyu Li, Haoxing Du in particular.  
+\end{acknowledgments}
+\mainmatter
+
+% %%% Chapter 0: Preliminaries
+% \include{preliminaries/preliminaries}
+%     \input{preliminaries/sec-notations}
+
+%%% Chapter 1: Tropical Geometry
+\include{tropical-geometry/tropical-geometry}
+    \input{tropical-geometry/sec-algebraic-varieties-projective-varieties} 
+    \input{tropical-geometry/sec-schemes-sheaves}
+    \input{tropical-geometry/sec-tropical-arithmetic}
+    %\input{tropical-geometry/sec-nonarchimedean-analytic-space}
+    
+%%% Chapter 2: Toric Variety
+\include{toric-variety/toric-variety}
+    \input{toric-variety/sec-toric-variety}
+    \input{toric-variety/sec-toric-variety-p2}
+    
+%%% Chapter 3: Intersection Theory
+\include{intersection-theory/intersection-theory}
+    \input{intersection-theory/sec-cycles-equivalence-chow-group}
+    \input{intersection-theory/sec-computing-chow-ring}
+    \input{intersection-theory/sec-chow-ring-and-cohomology}
+    \input{intersection-theory/sec-derivation-of-chow-ring-of-projective-spaces}
+
+%%% Chapter 4: Tropicalization
+\include{tropicalization/tropicalization}
+    \input{tropicalization/sec-complexes-polyhedron}
+    \input{tropicalization/sec-tropical-variety}
+    \input{tropicalization/sec-hyperplane-arrangement}
+    \input{tropicalization/sec-regular-triangulation}
+    \input{tropicalization/sec-geometric-tropicalization}
+    \input{tropicalization/sec-tropical-grassmannians}
+
+%%% Chapter 5: Tropicalization of Spaces of Heavy/light weighted stable curve
+\include{trop-moduli-space-weighted-curves/trop-moduli-space-weighted-curves}
+    \input{trop-moduli-space-weighted-curves/sec-moduli-space-of-curves}
+    \input{trop-moduli-space-weighted-curves/sec-matroid}
+    \input{trop-moduli-space-weighted-curves/sec-bergman-fan}
+    \input{trop-moduli-space-weighted-curves/sec-tropical-moduli-spaces}
+    \input{trop-moduli-space-weighted-curves/sec-geometric-tropicalization-for-m-0n}
+    \input{trop-moduli-space-weighted-curves/sec-geometric-tropicalization-for-m-0w}
+    \input{trop-moduli-space-weighted-curves/sec-losev-manin-space}
+
+%%% Chapter 6: Future Work
+\include{future-work/future-work}
+
+%%% Appendix 
+\appendix
+\include{appendix}
+
+\include{source_code}
+
+\backmatter
+
+\bibliographystyle{hmcmath} 
+
+\bibliography{mybib}
+
+\end{document}
