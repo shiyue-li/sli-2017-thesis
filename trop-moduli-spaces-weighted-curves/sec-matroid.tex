@@ -1,0 +1,111 @@
+\section{Matroids}
+\label{sec:matroids}
+    In computer science theory and combinatorics, 
+    there exists a mathematical generalization abstraction of the notion of independence 
+    in vector space, which gives birth to matroid theory. 
+    We can formalize a balanced fan in the language of matroid theory as follows, and introduce the definition of Bergmanfan in next section.
+    \begin{theorem}[\citet{Cavalieri2014}]
+    	The moduli space $\mathcal{M}_{0, w}^{\trop}$ with the heavy/light weights is the 
+	    Bergman fan of a graphic matroid. 
+    \end{theorem}
+    
+    Originated from computer science, a friendly definition of matroid is the following.
+    \begin{definition}
+        A finite matroid $M$ is a pair $(E, I)$, 
+        where $E$ is a finite set called ground set,
+        and $I$ is a set of subsets of $E$ (so called independent set)
+        such that $I$ has the following properties:
+    	\begin{enumerate}
+		    \item[(1)]
+			    The empty set is independent. Hence $I$ is not empty
+		        and that any subset of an independent set is also independent. 
+		        
+		    \item[(2)]
+			    For any $X, Y \in I$ such that $|X| > |Y|$,
+			    there exists $e \in X$ such that $Y \cup \{e\} \in I$. 
+	    \end{enumerate}
+    \end{definition}
+    
+    %%% Graphic Matroid
+    \subsection{Graphic Matroid}
+    \label{subsec:graphic-matroid}
+        In application, matroids can be used to generalize the notion of independence to graphs.
+        Here is a concrete, classical example of a matroid called graphic matroid:
+        Given any graph $G$ with the set of vertices $V$ and edges $E$.
+        We define the matroid $M$ by letting the ground set $E(M)$ be the set of edges $E$
+        and the independent set $I$ to be the set of all acyclic sets of edges. 
+        
+        Let us check that this pair $(E, I)$ satisfy the axioms of matroid:
+        The set of edges is a finite set so we proceed to check independent set axioms.
+        \begin{enumerate}
+    	    \item[(1)]
+		    The empty set $\varnothing \in I$ because it is certainly acyclic. 
+		    Any subset of edges $Y$ of an acyclic set of edges $X$ certainly do not form any cycles;
+		    since otherwise, the $X$ would have contained cycles to start with. 
+	        
+	        \item[(2)]
+		    Let $X, Y \in I$ such that $|X| > |Y|$.
+		    Assume for contradiction that adding any edge from $X$ to $Y$ 
+		    will lead to an cyclic set of edges. 
+		    This implies that the edges in $Y$ are incident to all the vertices 
+		    connected by edges in $X$,
+		    which furthermore implies that $|Y| \ge |X|$, a contradiction.
+        \end{enumerate}
+        Therefore, this $M = (E, I)$ is indeed a matroid, called ``graphic matroid".
+	
+	
+	%%%% General Matroid
+	\subsection{General Matroid}
+	\label{subsec:general-matroid}
+	    In our context, we use a generalization of the graphic matroid.
+    	We abstract the ground set of the matroid to be 
+	    $E = \{0, 1, \ldots, n\}$.
+		\begin{definition}[Matroid]
+			A \textbf{matroid} is a pair $M = (E, \calc)$ 
+			where $E$ is the finite set and 
+			$\calc$ is a collection of non-empty subsets of $E$,
+			called the \emph{circuits} of $M$,
+			that satisfies the following axioms:
+				\begin{enumerate}
+					\item[C1]
+					    No proper subset of a circuit is a circuit.
+					
+					\item[C2]
+						If $C_1, C_2$ are distinct circuits
+						and $e \in C_1 \cap C_2$,
+						then $(C_1 \cup C_2)\setminus \{e\}$
+						contains a circuit.
+				\end{enumerate}
+		\end{definition}
+		
+		Additionally,
+		we define flats of a matroid.
+		\begin{definition}[Flat]
+		\label{def:flat-of-a-matroid}
+		    A \textbf{flat} of a matroid $M$ 
+		    is the set $F$ such that $|C \setminus F| \ne 1$ 
+		    for any circuit $C$. 
+	    \end{definition}
+	    
+	    Recall the Definition \ref{def:circuit} of circuits.
+	    We learned that the circuits of $X$ 
+	    represents a tropical basis.
+	    Thus we can associate a tropical linear space $\trop(X)$
+	    with any given matroid $M$.
+	
+	\subsection{Connection with Tropical Linear Space}
+	\label{subsec:tropical-linear-space}
+	 
+	    \begin{definition}
+	    \label{def:tropical-linear-space}
+	        Given a variety (or scheme) $X$, recall the definition of a tropical variety (see Section \ref{sec:tropical-variety})
+	        The tropical variety $\trop(X)$ is a \textbf{tropical linear space}.
+	    \end{definition}
+	    In fact, we encountered this in our exposition of hyperplane arrangement (see Section \ref{sec:hyperplane-arrangement}),
+	    where the open part of an variety $X$ that can be embedded in a torus is the complement of a $n+1$ hyperplane arrangement in a projective space. 
+	    The compactifification of $X^{\trop}$ is a \textbf{wonderful compactification} of the hyperplane arrangement.
+	    An interested reader can refer to work of \citet{Feichtner2005}.
+	    In our case, the variety is exactly the moduli space of curves $\calm_{g, n}$,
+	    and the Grassmannians (see Section \ref{sec:tropical-grassmannians}) parametrize their parameter spaces. 
+	    The combinatorics of these tropical linear spaces can be studied using the theory of matroids. 
+

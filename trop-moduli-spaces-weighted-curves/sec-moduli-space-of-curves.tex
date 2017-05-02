@@ -1,0 +1,94 @@
+\subsection{Moduli Space of Curves}
+\label{sec:moduli-space-of-curves}
+    Let us formally state the definition of a moduli space. 
+    \begin{definition}[Moduli Space]
+        A moduli space of algebraic curves is a geometric space 
+        whose points represent isomorphism classes of algebraic curves.
+    \end{definition}
+    
+    We proceed to give definition of Hassett spaces, moduli spaces of weighted stable curves.
+    \begin{definition}
+    \label{def:nodal-stable-curve}
+    	A nodal, $n$-marked curve of genus $g$ is denoted as 
+	    $(X, p_1, \ldots, p_n)$ 
+	    where $p_i \in X(k)$ are the distinct nonsingular points of genus $g$
+	    nodal curve $X$.
+	    We say that a nodal, marked curve $(X, p_1, \ldots, p_2)$ 
+	    is \textbf{stable} if the set of automorphisms 
+	    \[
+	    \aut(X, p_1, \ldots, p_n)
+	    \]
+	    is finite.
+	    In other words, 
+	    there are only finitely many automorphisms of the curve $X$ 
+	    that fix each $p_1, \ldots, p_n$ pointwise. 
+    \end{definition}
+    
+    For more advanced readers, 
+    we can say that $(X, p_1, \ldots, p_n)$ is stable 
+    if the restriction of $\omega_X(p_1 + \cdots + p_n)$ 
+    to every irreducible component of $X$ is a line bundle of positive degree.
+    Here $\omega_X$ is the dualizing sheaf of $X$.
+    
+    Given a weight vector, we have the following:
+    \begin{definition}[Tropical $w$-stable curve]
+    \label{def:tropical-w-stable-curve}
+        Let $w = (w_1, w_2, \ldots, w_n) \in \Q^n$ 
+        be a vector of weights satisfying $0 < w_i \le 1$ for all $i$ 
+        and $\sum\limits_{i = 1}^{n} w_i > 2$.
+        Let $C$ be a tree of $\P^1$'s, with $n$ smooth marked points 
+        $p_1, p_2, \ldots, p_n$. 
+        The curve $C$ is $w$-stable, if for each component $T$ of $C$,
+        the sum 
+        \[
+        \sum\limits_{i;p_i \in T} w_i + \text{ number of nodes} > 2.
+        \]
+    \end{definition}
+    If $w = (1^n)$, meaning all its entries are $1$'s,
+    then $\overline{M_{0, w}} = \overline{M_{0, n}}$,
+    which is the canonical moduli space of weighted stable curves. 
+    
+    We define heavy and light as follows 
+    \begin{definition}[Heavy/light]
+    \label{def:heavy-light}
+    Let $w \in \Q^n$. Let $i \in [n]$.
+    \begin{enumerate}
+        \item $i$ is heavy in $w$, if for all $j \ne i$,
+            we have $w_i + w_j > 1$. 
+        \item $i$ is small in $w$, if $w_i + w_j > 1$ implies that $j$ is heavy in $w$. 
+        \item if the total weights of small points is less than $1$,
+        we say that they are light. 
+    \end{enumerate}
+    \end{definition}
+    Usually we call weight vectors that contain only entries that are either heavy or light by \emph{heavy/light}. 
+    Thus moduli spaces of heavy/light weighted stable curves are called Hassett spaces. 
+    
+    In \citet{Cavalieri2014}, we know for higher genus moduli spaces,
+    they do not nicely embed into toric varieties. 
+    However, for genus $0$, the compactification of $\calm_{0, w}$ can be obtained combinatorially. 
+    We are interested in: for what weight vector $w$ can 
+    the cone complex $\calm_{0, w}^{\trop}$ be given the structure of a balanced fan.
+    They proved that 
+    \begin{theorem}
+    	The cone complex $\calm_{0, w}^{\trop}$ can be given the structure of a balanced fan 
+	    in a vector space if and only if $w$ has only heavy and light entries. 
+    \end{theorem} 
+    
+    \begin{theorem}
+    	Let $w$ be a heavy/light weight vector.
+	    There exists a toric variety $X_\Sigma$ with the torus $T_w$,
+    	and an embedding of the Hassett space 
+	    $\calm_{0, w} \hookrightarrow T_w$
+	    such that 
+	    \begin{enumerate}
+		    \item[(1)] The         tropicalization of $\calm_{0, w}$ with respect to this embedding is 
+			$\calm_{0, w}^{\trop}$.
+		    
+		    \item[(2)]
+			The fan $\Sigma$ is $\calm_{0, w}^{\trop}$.
+	    	
+	    	\item[(3)]
+			The closure of $\calm_{0, w}$ in $X_\Sigma$ is called 
+			Hassett's compactification $\overline{\calm}_{0, w}$.
+	\end{enumerate}
+    \end{theorem}

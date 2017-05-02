@@ -1,0 +1,57 @@
+\section{Geometric Tropicalization for $\overline{\calm_{0, n}}$}
+\label{sec:geometric-tropicalization-for-m-0n}
+    %% subsection
+    \subsection{Embedding of $\calm_{0,n}$ into the torus $T^{\binom{n}{2} - 2}$}
+    \label{subsec:embedding-m-0n-into-torus}
+        We start from recalling the Grassmannians in Section \ref{sec:tropical-grassmannians}.
+        In the work of \citet{Maclagan2010}, we obtain the following geometric quotient:
+        Let $\gr^0(2, n)$ be the open contained in $\gr(2, n)$.
+        It is the set of subspaces of dimension $2$ that are mapped to nonvanishing Pl\"{u}cker coordinates,
+        under the Pl\"{u}cker map.
+        Geometrically, these are the two-planes that do not pass through the intersection of any pair of coordinate hyperplanes,
+        which implies that the torus $T^{n-1}$ 
+        acts freely on $\gr^0(2, n)$ 
+        (i.e. the stabilizer of the action is trivial)
+        and all the orbits are maximal dimensional.
+        Let $\overline{\calm}_{0, n}$ 
+        be the moduli space of smooth $n$-pointed rational curves.
+        The moduli space $\calm_{0, n}$ 
+        is thus equal to the geometric quotient     of $\gr^0(2, n)/ T^{n-1}$.
+        By Theorem 4.1.8 in \citet{Kapranov1993}, the compactification of $\calm_{0, n}$ is thus the Chow quotient of $\gr(2, n)$.
+        That is 
+        \[
+        \gr(2, n) /^\text{Ch}T^{n-1} = \overline{\calm}_{0, n}. 
+        \]
+    
+        Recall that in Subsection \ref{subsec:grassmannians-as-projective-varieties} and Example \ref{ex:gr-2n-plucker-ideal}
+        we worked out the fact that 
+        the Grassmannian $\gr(2, n)$ is a     subvariety of $\P^{\binom{n}{2} - 1}$ 
+        via the Pl\"{u}cker embedding.
+        At the same time, 
+        this embedding maps the $\gr(2, n)$ 
+        to the torus of $\P^{\binom{n}{2} - 1}$.
+        Therefore, we have 
+        \[
+        p(\calm_{0, m}) \subset (T^{\binom{n}{2} / T})/T^{n-1} \cong T^{\binom{n}{2} - n}.
+        \]
+        
+    %% Subsection
+    \subsection{Compactification of $\calm_{0, n}$}
+    \label{subsec:compactification-m-0n}
+        In light of Theorem 2.26 and 
+        Example 2.18 of \citet{Cavalieri2014},
+        we see the tropical moduli space $\calm_{0, n}^{\trop}$ 
+        comes with an natural fan structure, namely the Bergman fan and an embedding in a vector space.
+        
+        Keeping the discussion of geometric tropicalization above and in Section \ref{sec:geometric-tropicalization} in mind,
+        we state the following theorem.
+        \begin{theorem}[Theorem 3.1, \citet{Cavalieri2014}]
+            Consider the embedding of $\calm_{0, n}$ into the torus $T^{\binom{n}{2} - n}$ described above,
+            The closure of $\calm_{0, n}$ in the toric variety $X(\calm_{0, n}^{\trop})$ is the compactification $\overline{\calm}_{0, n}$.
+            Futhermore, the tropicalization of $\calm_{0, n}$ in this torus is $\calm_{0, n}^{\trop}$.
+        \end{theorem}
+        
+        
+        
+    
+     

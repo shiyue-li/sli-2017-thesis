@@ -1,0 +1,99 @@
+\section{Tropical moduli spaces of weighted curves as Bergman fans}
+\label{sec:tropical-moduli-spaces-of-weighted-curves-as-bergman-fans}
+    From our previous discussion of tropical linear spaces,
+    $\calm_{0, n}^{\trop}$ produces a natural fan structure, 
+    where the $d$-dimensional cones 
+    correspond to a combinatorial type of curve
+    with $d$ bounded edges.
+    Such cones give the coursest fan structure defined on $\calm_{0, n}^{\trop}$
+    and we call such fan structure \textbf{combinatorial subdivision}.
+    The work of \citet{Ardila2006} and \citet{Francois2013}
+    showed that $\calm_{0, n} \cong B'(M)$ 
+    the Bergman quotient space. 
+    
+    The cone complex $\calm_{0, w}^{\trop}$ is obtained via contracting unstable rays and cones spanned by them. 
+    We thus define a natural projection $\pr_w$ of $\calm_{0, n}^{\trop}$ associated with the weight vector, such that it contracts the unstable rays.
+    Previously we stated theorems from \citet{Cavalieri2014} that $\pr_w$ might contract too many cones unless $w$ only has heavy/light entries. 
+    Additionally, $\pr(\calm_{0, n}^{\trop})$ indeed induces balanced fan structure, which can be understood as Bergman fan of a graphic matroid. 
+    In later sections, we will explain in more detail how we use techniques of geometric tropicalization to study the relationship between the $\calm_{0, w}^{\trop}$ and $\calm_{0, w}^{\trop}$
+    
+    %% Subsection
+    \subsection{Connection between the complete graph $K_{n-1}$ and $\calm_{0, n}^{\trop}$}
+    \label{subsec:complete-graph-m-0n}
+        With a weight vector, we can construct total and reduced weight graphs.
+        
+        \begin{definition}[Total weight graph]
+        \label{def:total-weight-graph}
+            Let $w$ be a weight vector. 
+            We define the total weight graph $G_t(w)$ to be the graph on 
+            vertices $\{1, \ldots, n\}$ where two vetices $i, j$ are connected by an edge, if and only if $w_i + w_j > 1$. 
+        
+            Using this graph, we can redefine heavy and small:
+            
+            \begin{enumerate}
+            \item $i$ is heavy if $i$ is connected to all other vertices in $G_t(w)$.
+            
+            \item $i$ is small if $i$ is only connected to heavy vertices.
+            \end{enumerate}
+        \end{definition}
+    
+        \begin{definition}[Reduced weight graph]
+        \label{def:reduced-weight-graph}
+            The reduced weight graph, denoted $G(w)$ is the graph obtained from $G_t(w)$ by deleting any single heavy vertex.
+        \end{definition}
+        
+        We are allowed to delete a heavy note because in fact we are only studying the cases when weight vector has at least $2$ heavy weights to avoid losing dimensions 
+        (Corollary 2.24, \citet{Cavalieri2014}).
+        
+        Therefore, there is a natural projection corresponding to $\pr_w$,
+        that also contracts unstable weights, from the Bergman fan of the complete graph $K_{n - 1}$ to that of $G(w)$:
+        \[
+        \widetilde{\pr}_w: \calm_{0, n}^{\trop} \cong B'(K_{n - 1}) \rightarrow B'(G(w)).
+        \]
+        
+    %% Subsection
+    \subsection{The graphic building set}
+    \label{subsec:graphic-building-set}
+        We just saw how we identify $\calm_{0, n}^{\trop}$ and $\calm_{0, w}^{\trop}$ with graphs,
+        and identify $\pr_w$ with $\widetilde{\pr}_w$. 
+        The building set of $M$ can also be identified on the graph $G(w)$.
+        
+        \begin{definition}[Definition 2.16, \citet{Cavalieri2014}]
+        \label{def:building-set-of-1-connected-flats}
+            Let $M_{G(w)}$ be corresponding graphic matroid of $G(w)$.
+            We define the \textbf{building set of $1$-connected flats} as:
+            \[
+            \calg_{G(w)} \coloneqq \{F \in \calf(M_{G(w)}: G(w)_{|F} \text{ is connected})\}.
+            \]
+        \end{definition}
+        
+        The following result states the correspondence between the combinatorial types of the curves in $\pr_w(\calm_{0, w}^{\trop})$ and the cones of $B'(G(w))$.
+        \begin{theorem}[Theorem 2.17, \citet{Cavalieri2014}]
+        \label{thm:correspondence-fan-cone}
+            Let $w$ be a weight vector and assume that $w$ has at last two heavy entries.
+            Then $\pr_w(\calm_{0, n}^{\trop}) = B'(G(w))$. 
+            Futhermore, the combinotiral types of curves in $\pr_w(\calm_{0, n}^{\trop})$ correspond to the cones of $B'(G(w))$ in the nested set subdivison with respect to $\calg_{G(w)}$, the building set of $1$-connected flats.
+        \end{theorem}
+        
+        Examples 2.18 and 2.19 in \citet{Cavalieri2014} demonstrates this correspondence and showed that $\pr_w(\calm_{0, n}^{\trop}) = B'(G(w))$ 
+        may not be the embedding of the cone complex of $\calm_{0, w}^{\trop}$ as a fan. 
+        The top-dimensional cones of $\calm_{0, n}^{\trop}$ on which $\pr_w$ fails to be injective prevents the balanced embedding of $\calm_{0, w}^{\trop}$ in a vector space. 
+        For a cone of $\calm_{0, n}^{\trop}$,
+        if it has a ray $r$ such that $\pr_w(r) = 0$ or has two rays $r, s$ such that $\pr_w(r) = \pr_w(s)$ then $\pr_w$ is not injective on the cone. 
+        However, in our case of heavy/light Hassett spaces, we have the following theorem. 
+        \begin{theorem}[Theorem 2.26, \citet{Cavalieri2014}]
+            Let $w$ be heavy/light, 
+            with at least two heavy entries.
+            The cone complex underlying $\pr_w(\calm_{0, n}^{\trop})$ is naturally identified with $\calm_{0, n}^{\trop}$.
+            In particular, 
+            this complex has the structure of a balanced fan. 
+            If $w$ is not heavy/light,
+            then there does not exist a balanced embedding of $\calm_{0, w}^{\trop}$ into a vector space.
+        \end{theorem}
+        We will use this theorem to study the geometric tropicalization and the Chow ring of the heavy/light Hassett spaces. 
+        
+        
+        
+    
+
+    

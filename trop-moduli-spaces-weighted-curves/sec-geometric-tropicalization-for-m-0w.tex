@@ -1,0 +1,60 @@
+\section{Geometric Tropicalization for $\overline{\calm_{0, w}}$}
+\label{sec:geometric-tropicalization-for-m-0w}
+    Moving towards our goal of discussing heavy/light Hassett spaces,
+    we let $w$ be a weight vector with only heavy and light weights,
+    and assume that there are at least $2$ heavy weights. 
+    Such assumptions are based on Theorem II and Corollary 2.24 in \citet{Cavalieri2014}, 
+    which we state as follows.
+    
+    \begin{theorem}[Theorem II, \citet{Cavalieri2014}]
+    \label{thm:heavy-light-balanced-fan}
+        The cone complex $\calm_{0, w}^{\trop}$ can be giving the structure of a balanced fan in a vector space if and only if $w$ has only heavy and light entries.
+    \end{theorem}
+    
+    \begin{corollary}[Corollary 2.24, \citet{Cavalieri2014}]
+        Let $w$ be a weight vector.
+        The projection associated with $w$, $\pr_w$ contracts all top-dimensional cones of $\calm_{0, n}^{\trop}$ if and only if $w$ does not have at least two heavy entries. 
+    \end{corollary}
+    We want to avoid letting the projection contracts top dimensional cones
+    which causes the tropical moduli space to have wrong dimension. 
+    We denote the weight vector $w$ explicitly as $w = (1^k, \epsilon^l)$ such that $k + l = n$ and $\epsilon$ is light. 
+    
+    Applying geometric tropicalization techniques, we state the following theorem from a very recent work that describes the boundary of the compactification $\overline{\calm}_{0, w}$
+    \begin{theorem}[Theorem 1.1, \citet{Ulirsch2015}]
+        Let $\calm_{0, n}$ be the locus of smooth curves in $\overline{\calm}_{0, w}$.
+        Then the boundary $\overline{\calm}_{0, w} \setminus \calm_{0, w}$ is a divisor with simple normal crossings. 
+    \end{theorem}
+    
+    \begin{definition}
+    \label{def:Pr}
+        Let $\Pr_w$ be a projection from $T^{\binom{n}{2}}/T^n$
+        by dropping all the Pl\"{u}cker coordinates $p_{ij}$ for $i \ne j$ and $w_i = w_j = \epsilon$ in the weight vector.  
+    \end{definition}
+    
+    This projection agrees with the map that contracts the unstable rays. 
+    Via the Pl\"{u}cker embedding,
+    we know that the open part $\calm_{0, w}$ can be embedded into $\Pr_w(T^{\binom{n}{2}}/T^n)$. 
+    The tropicalization of the map $\Pr_w$ 
+    will correspondingly contract the vector $v_{ij}$ in the resultant Bergman fan, (recall that the tropicallization of $\calm_{0, n}$ gives us a fan structure). 
+    
+    To summarize the above remarks, 
+    we have the following lemma.
+    \begin{lemma}[Lemma 3.7, \citet{Cavalieri2014}]
+        The geometric tropicalization of $\overline{\calm}_{0, w}$ using the Pl\"{u}cker embedding into the projectivization of the torus is identified with $\pr_w(\calm_{0, n}^{\trop})$.
+    \end{lemma}
+    We then state another theorem
+    \begin{theorem}[Theorem 3.9, \citet{Cavalieri2014}]
+    \label{thm:tropical-compactification-m-0w}
+        Let $w$ be heavy/light.
+        Consider the embedding
+        \[
+        \calm_{0, w} \hookrightarrow T_w = \Pr_w(T^{\binom{n}{2}}/T^n).
+        \]
+        The compactification of $\calm_{0, w}$ in $T_w$ defined by the fan $\calm_{0, w}^{\trop}$ is isomorphic to $\overline{\calm}_{0, w}$.
+        The tropicalization of $\calm_{0, w}$ with respect to this embedding is $\pr_w(\calm_{0, n}^{\trop}) = \calm_{0, w}^{\trop}$.
+    \end{theorem}
+    
+    This theorem gives us a way to find a wonderful compactification of the moduli space of heavy/light weighted stable curves inside of a toric variety defined by the tropicalization of the moduli space.
+    Furthermore, the Chow ring of the compactification coincides with the Chow ring of the toric variety,
+    which can be computed using the fan structure given by the tropicalization of the moduli space.
+    

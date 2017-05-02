@@ -1,0 +1,100 @@
+\section{Bergman Fan and Nested Sets}
+\label{sec:bergman-fan-and-nested-sets}
+	We now describe a fan that is a generalization of 
+	the simplicial fan generated from the lattice $\call(B)$ in Section \ref{sec:hyperplane-arrangement}.
+	\begin{theorem}
+		Let $M$ be a matroid on $E = [n]$.
+		The collection of cones, 
+		who is a positive span of the standard basis 
+		associated with the all chains of flats of $M$,
+		forms a pure simplicial fan of dimension $\rho(M) - 1$
+		in $K^{n+1}/K$.
+		The support of this fan equals the tropical linear space
+		$\trop(M)$.	
+	\end{theorem}
+	The dimension of the simplicial fan can be explained as:
+	since each chain of flats of the matroid $M$ can be extended to 
+	a maximal chain, 
+	and each maximal chain of flats $\rho(M) p- 1$ proper flats.
+	
+	In general, 
+	$\trop(M)$ can be identified with $\Delta_M$, the order complex of 
+	the geometric lattice of $M$.
+	There is a coarser fan structure associated with $\trop(M)$ 
+	give by the order complex as well, called \textbf{Bergman fan}.
+	We describe the combinatorial description of this Bergman fan,
+	since this aspect is the most concrete and computable aspect to us. 
+	
+    %% Subsection
+    \subsection{Bergman Fan}
+    \label{subsec:bergman-fan}
+        \begin{definition}[Bergman Fan]
+        \label{def:bergman-fan}
+            For any matroid $M$ with ground set $E(M)$
+            we associate a polyhedral fan, 
+		    the Bergman fan $B(M) \subseteq \R^{|E|}$ 
+		    in the following manner:
+            \[
+            B(M) \coloneqq \{w \in \R^{|E|}; M_w \text{is loop-free}\}
+            \] 
+            where $M_w$ is the matroid on $E$ 
+            whose bases are all bases $B$ of $M$ of minimal 
+		    $w$-weight $\sum_{i \in B}w_i$. 
+        \end{definition} 
+
+	    \begin{definition}[Equivalent definition of Bergman fan]
+	    \label{def:bergman-fan-2}
+    	    For a matroid $M$ on the ground set $[n] = \{1, 2, \ldots, n\}$,
+    	    the Bergman fan $B(M) = \{w \in \mathbb{R}^n\}$ 
+    	    such that for every circuit $C \in M$,
+    	    the minimum of the set $\{w_i | i \in C\}$ is attained 
+		    at least twice.
+        \end{definition}
+    
+    %% Subsection
+    \subsection{Nested Sets}
+    \label{subsec:nested-sets}
+        Work of \citet{Feichtner2005} and \citet{Maclagan2015},
+        shows that there are several polyhedral structures constructed on the Bergman fan using the theory of building set.
+        Recall that we introduced the definition of lattice of flats before (see Definition \ref{def:lattice-of-flats}
+        and \ref{def:flat-of-a-matroid}).
+        A building set is defined as 
+        \begin{definition}[Definition 2.3, \citet{Cavalieri2014}]
+        \label{def:building-set}
+            Let $\calf$ be tha lattice of flats of a matroid $M$.
+            For two flats $F, F' \in \calf$ we write $[F, F'] = \{G \in \calf: F \subseteq G \subseteq F'\}$. 
+            A building set for $\calf$ is a subset $\calg$ of $\calf\setminus \{\varnothing\}$ such that the following holds:
+            For any $F \in \calf\setminus \{\varnothing\}$, 
+            let $\{G_1, \ldots, G_k\}$ be the maximal elements of $\calg$ contaiend in $F$.
+            Then there is an isomorphism of partially ordered sets:
+            \[
+            \varphi_F: \prod\limits_{j=1}^{k} [\varnothing, G_j] \rightarrow [\varnothing, F],
+            \] where the $j$-th component of $\varphi_F$ is the inclusion 
+            $[\varnothing, F]$.
+        \end{definition}
+        
+        \begin{definition}
+        \label{def:nested-set}
+            A subset $\cals$ of a building set $\calg$ is called \textbf{nested}, 
+            if for any of incomparable elements $F_1, \ldots, F_l$ in $\cals$ with $l \ge 2$,
+            the join of all the $F_i$ is not an element of $\calg$.
+        \end{definition}
+        \citet{Cavalieri2014} tells us that the nested sets of $\calg$ can form an abstract simplicial complex where a subset of a nested set is a nested set, coinciding with the definition of independent set of a matroid).
+        By assigning each of the flat $F$ a vector $v_F \in \R^{[E]}$ 
+        where $E$ is the ground set of the matrid,
+        and accordingly a cone for each nested set of $\calg$,
+        we obtain a polyhedral fan whose support (Definition \ref{def:support-of-a-polyhedral-complex}) is $B(M)$ where $M$ is the matroid. 
+    
+   	    \begin{definition}
+    	\label{def:bergman-fan-quotient-space}
+    	    Since for any matroid $M$,
+    	    the Bergman fan contains the linear space $L$,
+    	    spanned by the vector $(1, 1, \ldots, 1)$,
+    	    we study the quotient space $B'(M) = B(M)/L$.
+        \end{definition}
+        
+
+    
+
+    
+
