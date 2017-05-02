@@ -1,0 +1,153 @@
+\section{Convexity, Polyhedral Complices and Regular Triangulations} 
+\label{sec:convexity-polyhedral-complices-and-regular-triangulations}
+
+	\begin{definition}[Convexity]
+		A set $X \subseteq \R^n$ is \textbf{convex} if,
+		for all $\mathbf{u}, \mathbf{v} \in X$
+		and all $0 \le \lambda \le 1$,
+		we have $\lambda \mathbf{u} + (1 - \lambda)\mathbf{v} \in X$.
+		The \emph{convex hull} $\conv(U)$ of a set  
+		$U \subseteq \R^n$ si the smallest convex set containing $U$.
+		 If $U = \{\mathbf{u}, \ldots, \mathbf{u}_r\}$ is finite,
+		 then 
+		 \[
+		 \conv(U) = \{\sum\limits_{i = 1}^r \lambda_i \mathbf{u}_i: 0 \le \lambda \le 1, \sum\limits_{i = 1}^{r} \lambda_i = 1\}
+		 \]
+		 is called a polytope. 
+	\end{definition}
+	
+	\begin{definition}[Polyhedral Cone]
+		A \textbf{polyhedral cone} is a non-negative hull of 
+		finite subset of $\R^n$:
+		\[
+		C = \{\sum\limits_{i = 1}^r \lambda_i \mathbf{v}_i: \lambda_i \ge 0\}.
+		\]
+	\end{definition}
+	
+	\begin{definition}[Face of A Cone]
+		A \textbf{face} of a cone is determined by a linear functional 
+		(a linear map from its vector space to its field of scalar,
+		which in this case is $\R$)
+		$w \in \R^n$, via 
+		$f_w(C) = \{\mathbf{x} \in C: w \cdot x \le w \cdot y, y \in C \}$.
+	\end{definition}
+	
+	\begin{definition}[Polyhedral Fan]
+		A \textbf{polyhedral fan} is a collection of polyhedral cones,
+		the intersection of any two of which is a face of each.
+	\end{definition}
+	
+	\begin{definition}
+	    We say that a fan is \textbf{simplicial} 
+	    if the generators of each cone are linearly independent over $\R$.
+	\end{definition}
+	
+	\begin{remark}
+	We have another description of convex set: 
+	they are intersections of half spaces in $\R^n$.
+	We can also say that polyhedron $P \subset \R^n$ 
+	is the intersection of finitely many closed half spaces,
+	which can be written as 
+	\[
+	P = \{x \in \R^n: Ax \le b \}
+	\] 
+	where $A \in \mathbf{M}_{d \times n}$ and $b \in \R^d$.
+	We can view the polyhedron as the solution space 
+	of a linear systems of inequalities. 
+	\end{remark}
+	
+	\begin{definition}[Polyhedral Complex]
+		A \textbf{polyhedral complex} is a collection $\Sigma$
+		of polyhedra satisfying two conditions:
+		if $P$ is in $\Sigma$, 
+		then so is any face of $P$,
+		and if $P$ and $Q$ lies in $\Sigma$ 
+		then $P \cap Q$ is either empty or a face of both $P$ and $Q$.
+	\end{definition}
+	
+	\begin{definition}[Cells of Polyhedral Complex]
+		The polyhedra in a polyhedral complex $\Sigma$ 
+		are called the \textbf{cells} of $\Sigma$. 
+	\end{definition}
+	
+	\begin{definition}[Facets]
+		Cells of $\Sigma$ that are not faces of any larger cell are
+		\textbf{facets} of the complex.
+	\end{definition}
+	
+	\begin{definition}[Support]
+	\label{def:support-of-a-polyhedral-complex}
+		The \textbf{support} $\supp(\Sigma)$ of a polyhedral complex 
+		$\Sigma$ is the set 
+		$\{\mathbf{x} \in \R^n: \mathbf{x} \in P, P \in \Sigma \}$.
+	\end{definition}
+	
+	\begin{remark}
+	It may seem like support is the same as a polyhedral complex. 
+	However, there is a subtle difference:
+	polyhedral complex is a collection or a set of polyhedra;
+	support is the union of them. 
+	In other words, 
+	a polyhedral complex has an internal structure 
+	in terms of what its constituent polyhedra are and 
+	how they are arranged. 
+	Taking the support ``forgets" the internal structure 
+	and flattens it into an undifferentiated set of points.
+	\end{remark}
+	 
+	\begin{definition}[Lineality Space]
+	    Given a polyhedron $P$,
+		the \textbf{lineality space} 
+		of a polyhedron is the largest affine subspace 
+		contained in $P$.
+	\end{definition}
+	Another way to put this linear space is:
+	it is the largest linear subspace $V \subset R^n$ 
+	with the property that if $x \in P, v \in V$,
+	then $x + v \in P$ 
+	(the vector $v$ functions as a linear transposition to $x$).
+	
+	The \textbf{affine span} of a polyhedron $P$ 
+	is the smallest affine subspace containing $P$.
+	The \textbf{dimension} of $P$ is 
+	the dimension of the linear space along $P$.
+	
+	\begin{definition}[Pure]
+		A polyhedral complex $\Sigma$ is \textbf{pure} 
+		of dimension $d$ if every polyhedron in $\Sigma$ 
+		that is not the face of any other polyhedron in $\Sigma$ 
+		has dimension $d$. 
+	\end{definition}
+	
+	The following definitions start to build up to 
+	the connection between 
+	tropical geometry and polyhedral geometry.
+	
+	\begin{definition}[Rational Polyhedron]
+		Let $\Gamma$ be a subgroup of $(\R, +)$.
+		A \textbf{$\Gamma$-rational polyhedron} 
+		is 
+		\[
+		P = \{x \in \R^n: Ax \le b\},
+		\]
+		where $A$ is a $d \times n$ matrix with entries in $\Q$
+		and $b \in \Gamma^d$. 
+	\end{definition}
+	
+	\begin{definition}[Regular Subdivision]
+		Let $v_1, \ldots, v_r$ be an ordered list of vectors 
+		in $\R^{n+1}$ 
+		and fix $w = (w_1, \ldots, w_r) \in \R^r$/
+		The regular subdivision of $v_1, \ldots, v_r$ induced 
+		by $w$ is the polyhedral fan with support
+		$\pos(v_1, \ldots, v_r)$
+		whose cones are $\pos(v_i: i \in \sigma)$,
+		for all subsets $\sigma \subseteq [r]$
+		such that there exists $\mathbf{c} \in \R^{n+1}$ 
+		with $\mathbf{c} \cdot \mathbf{v}_i = w_i$ for $i \in \sigma$,
+		and 
+		$\mathbf{c} \cdot \mathbf{v}_i < w_i$ for $i \notin \sigma$.
+	\end{definition}
+	These regular subdivisions are the subdivision of the fan structure naturally induced by the tropical varieties, which we will see in the next section. 
+	
+	

@@ -1,0 +1,46 @@
+\section{Regular Triangulations}
+\label{sec:regular-trangulations}
+    We will not dive into the details of triangulations in this manuscript; however, it helps us formally visualize the polyhedral complices induced by tropical varieties. 
+	\begin{definition}[Triangulation]
+		A \emph{triang
+		ulation} $T$ of a point set 
+		$\cala = \{a_1,\cdots,a_n\}$ is a set of simplexes 
+		such that their vertices are in $\cala$, 
+		their union equals the convex hull $\conv(A)$, 
+		and the intersection of any pair of simplexes 
+		is their common (possibly empty) face.
+	\end{definition}
+	
+	For a fixed triangulation $T$ of $\cala$,
+	every vector $\phi \in \R^n$ induces a unique piecewise linear 
+	function $g_{\phi, T}(a_i) = \phi_i$ 
+	at the vertices of $T$
+	and by the requirement that 
+	$g_{\phi, T}(a_i)$ should be an affine function 
+	(meaning a linear function plus some constant
+	such that it looks like a straight line in a plane
+	or just linear space translated in higher dimensions)
+	on each simplex of $T$.
+	
+	Now we give a slightly less technical definition of the regular 
+	triangulations.
+	\begin{definition}[Regular Triangulations]
+		A triangulation $T$ of $\cala$ is said to be \textbf{regular}
+		if there exists a vector $\phi \in \R^n$ 
+		such that $g_{\phi, T}$ is strictly convex over $T$.
+	\end{definition}
+	
+	From this definition,
+	we can already see how these polyhedral complices are 
+	connected to tropical geometry
+	via this simple relationship between 
+	the regular triangulation in $\R^d$ 
+	and the convex hulls in $\R^{d+1}$.
+	By having this piecewise linear function 
+	$\phi: \cala \rightarrow \R$,
+	we are simply lifting every point $a_i \in \cala$ 
+	to the graph of $\phi$,
+	which form a convex hull above the graph formed by 
+	all the vertices in $\cala$. 
+	The \emph{lowest} part of this convex hull 
+	is thus the graph of the convex piecewise linear function.

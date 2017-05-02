@@ -1,0 +1,67 @@
+\section{Geometric Tropicalization}
+\label{sec:geometric-tropicalization}
+    Given a subvariety (or subscheme) $X \subset T^n$ embedded in a torus,
+    we can see that the tropical variety $X^{\trop}$ in fact gives a good compactification of $X$
+    using a technique called \textbf{geometric tropicalization}.
+    Geometric tropicalization was first used to study compactification of subvarieties in \citet{Tevelev2007} and compactifications of moduli spaces of del Pezzo surfaces in \citet{Hacking2007}. References in this section are 
+    \citet{Maclagan2015}, \citet{Payne2014},
+    \citet{Cavalieri2014}
+    and 
+    \citet{Cueto2011}.
+    
+    \begin{definition}[Boundary, Divisorial]
+    \label{def:boundary-divisorial}
+        Let $X$ be a very affine variety,
+        and $\overline{X}$ is a compactification of $X$.
+        We call the set $\partial \overline{X} = \overline{X}/X$
+        the \textbf{boundary}.
+        If the boundayr $\partial \overline{X}$ is a union of codimension-one subvarieties of $\overline{Y}$, 
+        we say the boundary is \textbf{divisorial}.
+    \end{definition}
+    
+    \begin{definition}[Combinatorial normal crossings divisor]
+    \label{def:combinatorial-normal-crossings-divisor}
+        Let $D_1, \ldots, D_l$
+        be the irreducible components of $\partial \overline{X}$.
+        The boundary $\partial \overline{X}$ is a \textbf{combinatorial normal crossings divisor}
+        if, 
+        for any subset $\sigma \subseteq \{1, \ldots, l\}$,
+        the intersection $\cap_{i \in \sigma} D_i$ has codimension $|\sigma|$ in $\overline{X}$.
+    \end{definition}
+    
+    \begin{definition}[Simple Normal Crossings]
+    \label{def:simple-normal-crossings}
+        Let $\partial \overline{Y}$ be a combinatorial normal crossings divisor.
+        for any subset $\sigma \subseteq \{1, \ldots, l\}$,
+        the intersection $\cap_{i \in \sigma} D_i$ is transverse,
+        then the boundary is \textbf{simple normal crossings}.
+    \end{definition}
+    Here we say that if an intersection is \textbf{transverse}, then the intersection will have codimension equal to the sums of the codimensions of the two interesecting $D_i, D_j$.
+    That is, transversality characterizes the most generic intersections.
+
+    Given a variety (or a scheme) $X$
+    with a simple normal crossing boundary divisor $D$,
+    there exists a map $\psi$ from $X \setminus D$ to a torus $T$,
+    such that this map is an embedding.
+    The map induces a map from the dual intersection complex $\Sigma$ to the vector space of one paramter subgroupos of $T$, which we briefly discussed in Section \ref{sec:toric-variety},
+    thus giving a fan structure on $\Sigma$. 
+    
+    Following the discussion of \citet{Cueto2011},
+    we see that the top dimensional cones of $\Sigma$ associated with a weight function in fact produces a balanced fan.
+    This fan gives a toric variety,
+    allowing us to consider the closure of image of the map $\psi$.
+    That is, we consider $\overline{\psi(X \setminus D}$ and its relationship with $X$. 
+    
+    Geometric tropicalization is an important techniques 
+    that we will be use to understand the combinatorial structure of $\calm_{0, n}^{\trop}$ and the boundary stratification of $\overline{\calm}_{0, n}$ (see Definition \ref{def:stratification}).
+    We will use geometric tropicalization to understand compactification of moduli spaces of smooth $n$-pointed curves and weighted curves in Section \ref{sec:geometric-tropicalization-for-m-0n}.
+    For an interested reader, 
+    we apologize for not diving into the details of tropical compactification, but we encourage readers to look into work \citet{Tevelev2004} and \citet{Maclagan2015}. 
+
+    
+    
+    
+    
+    
+    
+    

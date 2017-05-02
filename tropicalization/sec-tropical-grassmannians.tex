@@ -1,0 +1,448 @@
+\section{Tropical Grassamanians}
+\label{sec:tropical-grassmannians}
+    We begin our exploration families of varieties by starting with one of the object that parametrizes subvarieties, the Grassmannians.
+    The tropical Grassmannian arises from the ideal of quadratic Pl\"{u}cker relations 
+    and it parametrizes the tropical linear spaces.  
+    We will see that the lines in tropical projective space are trees, 
+    and their tropical Grassmannian $\gr(2, n)$ is the sapce of the Speyer -Sturmfels phylogenetic tress that we will study in \citet{Billera2002},
+    \citet{Speyer2004}. 
+    
+    Studying Grassmannians and Pl\"{u}cker's coordinates will first show us that
+    under Pl\"{u}cker embedding, the Grassmannians are projective varieties,
+    and further lead us to draw connections between the space of phylogenetic trees and moduli spaceso of curves. 
+    References of this section are \citet{Maclagan2015}, 
+    \citet{Speyer2003}, 
+    \citet{Ranganathan2010},
+    \citet{Hudec2007}
+    
+    
+    First, we recall that the following definition.
+    \begin{definition}[Tropical hypersurface]
+    \label{def:tropical-hypersurface}
+        Give a family of polynomials $F$ over an algebraically closed field $K$ with $n$ variables,
+        the \textbf{tropical hypersurface} $T(F)$ of $F$ is the set of points in $\K^n$ such that the minimum is attained at least twice. 
+        Equivalently, 
+        $T(F)$ is the set of all points in $K^n$ where $F$ is not differentiable. 
+    \end{definition}
+    In the definition above, recall the Definition of tropical hypersurface in Section \ref{sec:convexity-polyhedral-complices-and-regular-triangulations}
+    we mentioned that the tropical hypersurface is an $(n - 1)$-dimensional polyhedral complex in $K^n$. 
+    
+    %%%% Subsection
+    \subsection{Grassmannians}
+    \label{subsec:grassmannians}     
+        \begin{definition}[Grassmannians]
+        \label{def:grassmannians}
+            Let $V$ be a vector space. 
+            Grassmannian $\gr(r, V)$ is a space
+            that parametrizes all the $r$-dimensional linear subspaces of the vector space $V$. 
+            In another words 
+            \[
+            \gr(r, V) \coloneqq \{W \subset V: \dim W = r\}.
+            \]
+        \end{definition}
+        
+        \begin{example}[$\gr(2, 4)$]
+        \label{ex:gr24}
+            The set of all projective lines in the projective space $\P^3$ is $\gr(2, 4)$. 
+        \end{example}
+        
+        An associative algebra defined on any vector space $V$ is called \textbf{exterior algebra}.
+        The binary operation of any two element $v, w \in V$ is called \textbf{exterior product} or wedge product, denote as 
+        \[
+        v \wedge w
+        \]
+        such that $v \wedge w = - w \wedge v$. 
+        \begin{example}
+        \label{ex:v-wedge-v}
+            For any $v \in V$, $v \wedge v = 0$.
+            For any $v_i \in V$, 
+            $i \in \lambda$ some arbitrary index set,
+            $v_1 \wedge \cdots v_m = 0$ 
+            whenever $v_i = v_{i + 1}$ for any $i \in \lambda$.
+        \end{example}
+        The wedge product of any two elements is called $2$-blade.
+        Similarly,
+        the wedge product of any $k$ elements is called
+        $k$-blade. 
+        
+        \begin{definition}
+        \label{def:exterior-power-of-a-vector-space}
+            Let $V$ be a vector space.
+            The $k$th exterior power of the vector space, denoted as $\bw^k V$ 
+            is the span of all the $k$-blades of $V$.
+            That is
+            \[
+            \bw^k V \coloneqq \vecspan{v_1 \wedge \cdots \wedge v_k: v_i \in V}. 
+            \]
+        \end{definition}
+        
+        \begin{definition}[Totally decomposible]
+        \label{def:totally-decomposible}
+            A element $w \in \bw^k V$ is said to be \textbf{totally decomposable}
+            if it can be written as a $k$-blade;
+            that is, if 
+            \[
+            w = w_1 \wedge \cdots \wedge w_k,
+            \]
+        \end{definition}
+        
+        \begin{example}[Non-example]
+        \label{ex:not-totally-decomposable}
+            The element $w = w_1 \wedge w_2 + w_3 \wedge w_4 \in \bw^k V$ is not totally decomposable. 
+        \end{example}
+        
+        \begin{example}
+        \label{ex:totally-decomposible-1}
+            Every non-zero element of $\bw^1 V$ is totally decomposible. 
+        \end{example}
+        
+        \begin{example}
+        \label{ex:totally-decomposible-2}
+            If $\dim V = 3$,
+            then every non-zero element of $\bw^2 V$ is totally decomposable.
+        \end{example}
+        
+        \begin{definition}[Divisor]
+        \label{def:grassmannian-divisor}
+            Let $w \in \bw^k V$,
+            we say that $v \in V$ is a divisor of $w$ if there exists $u \in \bw^{k-1} V$ such that 
+            \[
+            w = v \wedge u. 
+            \] 
+        \end{definition}
+        
+        \begin{remark}
+        \label{rem:space-of-divisors}
+            One can see that if an element $w \in \bw^k V$ is totally decomposable,
+            then the space of divisors is a subspace of dimension $k$ in $V$.
+        \end{remark}
+        
+    %%%% Subsection
+    \subsection{The Pl\"{u}cker Embedding of $\gr(r, V)$}
+    \label{subsec:plucker-embedding-gr}
+        \begin{lemma}
+        \label{lem:plucker-embedding-lemma}
+            Let $V$ be a vector space over some field $K$. 
+            Let $W$ be a subspace of $V$ of finite dimension $r$ (i.e. $W$ is a point in $\gr(r, V)$).
+            Let $\calb_1 = \vecspan{v_1, \ldots, v_r}$
+            and $\calb_2 = \vecspan{w_1, \ldots, w_r}$.
+            Then 
+            \[
+            v_1 \wedge \cdots \wedge v_r = \lambda(w_1 \wedge \cdots \wedge w_r)
+            \]
+            for some $\lambda \in K$. 
+        \end{lemma}
+        Note that $\lambda$ is the determinant of the change of basis matrix from $\calb_1$ to $\calb_2$.
+        
+        \begin{definition}[Pl\"{u}cker embedding]
+        \label{def:plucker-embedding}
+            A map $p: \gr(r, V) \rightarrow \P(\bw^r V)$ is defined as follows:
+            given a subspace $W \in \gr(r, V)$ 
+            and a basis $\calb_W = \vecspan{w_1, \ldots, w_r}$ of $W$,
+            let $p: W \mapsto w_1 \wedge \cdots w_r$. 
+            This map is the P\"{u}cker map
+            and it embeds $\gr(r, V)$ into $\P(\bw^k V)$. 
+        \end{definition}
+        
+        \begin{remark}
+        \label{rem:plucker-embedding}
+            Since different bases of $W$ will yield different multivectors of $\bw^r V$,
+            but by Lemma \ref{lem:plucker-embedding-lemma},
+            this map is unique up to scalar multiplication,
+            hence a well-defined map on the \textbf{projectivization} of $\bw^r V$, 
+            denoted as $\P(\bw^r V)$.
+            We denote $p(W)$ as $[w]$.
+            
+            Notice that for any $v \in W$, 
+            $p(W) \wedge v = 0 \in \bw^{k+1} V$.
+        \end{remark}
+        
+        \begin{lemma}
+        \label{lem:grassmannian-image-totally-decomposable}    
+            $[w] \in \P(\bw^r V)$ 
+            lies in the image of the Grassmannian 
+            under the P\"{u}cker embedding 
+            if and only if $w$ is totally decomposable.
+        \end{lemma}
+        The proof of this lemma is left to the readers.
+        
+
+        
+        %%% Grassmannians as Projective Varieties
+        \subsection{Grassmannians as projective varieties}
+        \label{subsec:grassmannians-as-projective-varieties}
+            We will use the Pl\"{u}cker embedding 
+            and classify all the totally decomposable multivectors in $\bw^r V$ 
+            as injections into the projective space $\P(\bw^r V)$. 
+            
+            \begin{theorem}[Injectivity of Pl\"{u}cker map]
+            \label{thm:plucker-map-is-injective}
+                The Pl\"{u}cker map is injective. 
+            \end{theorem}
+            
+            \begin{proof}
+                Define a map $\pi: \P(\bw^r V) \rightarrow \gr(r, V)$ as 
+                \[
+                \pi: [w] \mapsto \{v \in V| v \wedge w = 0 \in \bw^{r + 1} V\}.
+                \]
+                We want to show that $\pi \circ p = \id$;
+                that is, $\pi \circ p(W) = W$ for any subspace $W \in \gr(r, V)$.
+                Let $W \in \gr(r, V)$ with basis $\vecspan{w_1, \ldots, w_r}$.
+                For any $w \in W$,
+                $w \wedge [w_1 \wedge \cdots \wedge w_r] = 0$. 
+                Thus $W \subseteq \pi \circ p(W)$.
+                
+                Let $v \in \pi \circ p(W)$, 
+                then $v \wedge w_1 \wedge \cdots \wedge w_r = 0$,
+                which implies $v$ is a linear combination of basis elements of $W$,
+                and is thus in $W$. 
+                
+                Therefore, $W = \pi \circ p(W)$ 
+                and $p$ is injective. 
+            \end{proof}
+            Such an injective map $p$ is indeed gives us the \textbf{Pl\"{u}cker embedding}.
+            
+            Now we identify the projectivization $\P(\bw^r V)$ with the projective space $\P^N$ as follows.
+            For a basis $\calb_V = \vecspan{v_1, \ldots, v_n}$,
+            we can choose $r$ basis elements to form a basis element of $\bw^r V$,
+            each is linearly independent from others and the $\binom{n}{r}$ basis elements span the whole vector space $\bw^r V$ of dimension $\binom{n}{r}$.
+            Projecting it, the projectivization $\P(\bw^r V)$ has dimension $N = \binom{n}{r} - 1$. 
+            Thus we embed the Grassmannian $\gr(r, V)$ in $P(\bw^r V) = \P^n$ via the Pl\"{u}cker map. 
+            That is 
+            \[
+            \gr(r, V) \subset \P^N, N = \binom{n}{r}.
+            \]
+            
+            Now we define a similar map $\phi(w): V \rightarrow \bw^{d+1} V$ 
+            for each $w \in \bw^r V$
+            by $\phi_w(v) = w \wedge v$.
+            Recalling Definition \ref{def:grassmannian-divisor}, 
+            we notice that all the divisors of $w$ are in $\ker(\phi_w)$. 
+            By Lemma \ref{lem:grassmannian-image-totally-decomposable}
+            and Remark \ref{rem:space-of-divisors},
+            we see that 
+            \begin{corollary}
+            \label{cor:rank-of-pi}
+                For $w \in \bw^r V$, 
+                $\phi_w$ has rank at most $n - r$.
+                In particular, if $w$ is totally decomposable, $\phi_w$ has rank exactly $n-r$. 
+            \end{corollary}
+            
+            Let us state the following theorem.
+            \begin{theorem}
+            \label{thm:grassmannian-is-projective-variety}
+                The image of the Grassmannian is a projective variety.
+                That is 
+                \[
+                p(\gr(r, V)) \subset P(\bw^r(V)).
+                \]
+            \end{theorem}
+            This fact can be seen using the linear algebra fact that the rank of a matrix $M \in \mathsf{M}_{n\times m}(K)$ is the largest $r$ such that there exists non-zero $r \times r$ minors of $M$ and establishing a map $\psi: \bw^r(V) \rightarrow \hom(V, \bw^{d+1}(V))$ 
+            such that $\psi(w) = \phi_w$.
+            Using the maximality of the $(n - r) \times (n - r)$ minors, 
+            a point $v \in \bw^r V$ lies in the locus of $(n - d + 1) \times (n - d + 1)$ minors of the matrix $\phi_w$, 
+            which we view as a $n \times \binom{n}{d+1}$ matrix throughout this proof sketch.
+            
+            Another connection with linear algebra is the following.
+            \begin{definition}[Pl\"{u}cker Coordinates]
+            \label{def:plucker-coordinates}
+                For a $r$-dimensional linear subspace $W \in \gr(r, V)$,
+                the (homogeneous) coordinates of $p(W) \in \P^N$
+                are the \textbf{Pl\"{u}cker coordinates} of $W$. 
+            \end{definition}
+            We remark that the coordinates are just 
+            all the maximal non-vanishing minors of the matrix 
+            whose rows are the basis of $W$. 
+            
+            \begin{example}
+            \label{ex:plucker-coordinates-example-1}
+                Consider the Pl\"{u}cker map of $\gr(1, n)$ maps a linear subspace $\vecspan{a_1 e_1 + \cdots + a_n e_n}$ is simply
+                to the point $(a_1: \cdots : a_n) \in \P^{\binom{n}{1} - 1} = \P^{n-1}$. 
+                Therefore, under this embedding, 
+                $\gr(1, n) = \P^{n-1}$.  
+            \end{example}
+            
+            \begin{example}
+            \label{ex:plucker-coordinates-example-2}
+                Consider the $2$-dimensional linear subspace 
+                $W = \vecspan{e_1 + e_2, e_1 + e_3} \in \gr(2, 3)$.
+                We can find its Pl\"{u}cker coordinates in $\P^{\binom{3}{2} - 1}$ in two ways.
+                Take the wedge product of the basis elements, 
+                $(e_1 + e_2) \wedge (e_1 + e_3) = 
+                e_1 \wedge e_1 + e_2 \wedge e_1 + e_1 \wedge e_3 + e_2 \wedge e_3 = 0 - e_1 \wedge e_2 + e_1 \wedge e_3 + e_2 \wedge e_3$.
+                Therefore, the coefficients this multivector is the Pl\"{u}cker coefficients of $W$ in $\P^2$;
+                that is, $(-1, 1, 1)$. 
+                
+                Another way of seeing this is using the maximal minors othe matrix 
+                \[
+                M = 
+                \begin{bmatrix}
+                    1 & 1 & 0 \\
+                    1 & 0 & 1 
+                \end{bmatrix}
+                \] where each row represents the coefficients of the canonical basis elements in the basis of $W$. 
+                Calculating the maximal minors, we obtain the same answer $(-1, 1, 1)$.
+                Notice that the any change of the spanning vectors only changes of the maximal minors by scalar multiplication,
+                because the change is equivalanet to row operations on the matrix. 
+                This example also confirms that the homogeneous Pl\"{u}cker coordinate of a point in $\gr(r, V)$ is well-defined. 
+            \end{example}
+            
+            After working through Grassmannian and Pl\"{u}cker coordinates, 
+            we will see how tropical Grassmannians are connected to phylogenetic trees in the next subsections. 
+            
+    \subsection{Space of Phylogenetic Trees}
+    \label{subsec:grassmannians-and-space-of-phylogenetic-trees}
+		A \textbf{phylogenetic tree} is tree $\tau$ 
+		with finite labeled leaves
+		and no vertices of degree two
+		(because it must of degree three or above to avoid 
+		bisecting an existing edge) 
+		This is a notion arised from computational biology.
+		We call the edges adjacent to the leaves of a phylogenetic 
+		tree $\tau$ the \textbf{pendant edges} of $\tau$. 
+		
+		For any two leaves on a phylogenetic tree $\tau$,
+		there exists a unique path 
+		whose component edges have lengths.
+		The sum of the lengths of all edges on a path between 
+		leaves $i$ and $j$ is denoted  $d_{ij}$.
+		The set of all distances, or metrics, on a tree $\tau$ 
+		is called \textbf{tree metrics}
+		and we thus obtain a metric space $[m]$. 
+		
+		For a tree $\tau$ with $n$ edges,
+		we can put all the $\binom{n}{2}$ distances between 
+		all pairs of $d_{ij}$ into a vector 
+		$\mathbf{d} \in \R^{n \choose 2}$.
+		Let $\Delta$ denote the set of all tree metrics in 
+		$\R^{n \choose 2}$.
+		The resultant metric space is called
+		\textbf{space of phylogenetic trees}.
+            
+    %%% Subsection
+    \subsection{Tropical Grassmannian and Tropical Linear Varieties from Phylogenetic Trees}
+        In this subsection we study the tropicalization of Grassmannian
+        and tropical linear varieties. 
+        In particular, we will see how tropical linear spaces, 
+        parametrized by Grassmannians, can correspond to phylogenetic trees.
+        The recent work \citet{Dukkipati2013} proved that 
+        there is a point on the tropical grassmannian that corresponds to each subtree of the phylogenetic tree.
+        They also showed a necessary and sufficient condition for
+        each of the subtree of a phylogenetic tree to be actually a fact of the tropical linear space. 
+        The combinatorial structure of phylogenetic trees can reveal combinatorial structure of the tropicalization of the moduli spaces of curves. 
+        
+        The way we saw that $\gr(r, V)$ is a projective space in $\P^N$ 
+        was through viewing $\gr(r, V)$ as the zero set of the maximal minors of a matrix. 
+        Now we formally state that: 
+        The Grassmannians are in fact the zero set of Pl\"{u}cker ideal,
+        which is generated by all the Pl\"{u}cker relations.
+        
+        \begin{definition}
+        \label{def:plucker-relation}
+            For any two sequences $1 \le i_1 < \ldots < i_{r-1} < n$
+            and $1 \le j_1 \le ldots \le j_{r+1} \le n$,
+            the Pl\"{u}cker relation is defined as 
+            \[
+            \sum\limits_{m=1}^{r+1} (-1)^m p_{i_1, i_2, \ldots, i_{r-1}, j_m} p_{j_1, j_2,\ldots, \hat{j_a}, \ldots, j_{r+1}}
+            \] where $\hat{j_a}$ means leaving out $j_a$ element.
+        \end{definition}
+        
+        Let $I = \{i_l\}_{l=1}^{r-1}$, $J = \{j_k\}_{k=1}^{r+1}$.
+        \begin{definition}[Pl\"{u}cker Ideal]
+        \label{def:plucker-ideal}
+            Let $I_{r, n}$ define the homogeneous ideal generated by all the Pl\"{u}cker relations, called \textbf{Pl\"{u}cker ideal}.
+            That is,
+            \[
+            I_{r, n} = \inner{P_{I, J}: I, J \subseteq [n], |I| = r - 1, |J| = r + 1}
+            \] where $P_{I, J}$ is the Pl\"{u}cker relations. 
+        \end{definition}
+        
+        \begin{proposition}
+        \label{prop:grassmannian-is-zero-setof-plucker-idea}
+            The Grassmannian $\gr(r, V)$ is the subvariety of $\P^{\binom{n}{r} - 1}$ defined by this ideal.
+        \end{proposition}
+        
+        \begin{definition}[Tropical Grassmannian]
+        \label{def:tropical-grassmannian}
+        The \textbf{tropical grassmannian} is $\trop(V(I_{r, n})$. 
+        \end{definition}
+        
+        \begin{example}
+        \label{ex:gr-24-plucker-ideal}
+            For $\gr(2, 4)$, we can let $I = \{1\}, J = \{2, 3, 4\}$.
+            \[
+            P_{I, J} = -p_{12}p_{34} + p_{13}p_{24} - p_{14}p_{23}.
+            \]
+            Or equivalently, we could have $I = \{2\}, J = \{1, 3, 4\}$,
+            or other $2$ possibilities, 
+            which will give us the same relations up to sign.
+            They all generate the same ideal, that is 
+            \[
+            I_{2, 4} = \inner{P_{\{1\}, \{234\}}} = \inner{P_{\{2\}, \{134\}}} = \inner{P_{\{3\}, \{124\}}} = \inner{P_{\{4\}, \{123\}}}.
+            \]
+        \end{example}
+        
+        \begin{example}
+        \label{ex:gr-2n-plucker-ideal}
+        In fact, the above example can be generalized to $\gr(2, n)$.
+        We have
+        \[
+        I_{2, n} = \inner{p_{ij}p_{kl} - p_{ik}p_{jl} + p_{il} p_{jk}: i, j, k, l \in [n]}.
+        \]
+        The tropical Grassmannian 
+        is thus $\trop(V(I_{2, n})) = \trop(V(p_{ij}p_{kl} - p_{ik}p_{jl} + p_{il} p_{jk}))$.
+        Tropicalizing, we have that 
+        \[
+        \trop(V(I_{2, n})) = \{\text{the set of points where minimums of } p_{ij} + p_{kl},  p_{ik} + p_{jl},  p_{il} + p_{jk} \text{ is attained twice}\}
+        \]
+        \end{example}
+        
+        We state the following theorem from \citet{Dukkipati2013}.
+        \begin{theorem}[Theorem 5.2, \citet{Dukkipati2013}]
+            The Grassmannian $\gr(2, n)$ is equivalent to the space of all phylogenetic trees. 
+        \end{theorem}
+        For more detailed descriptions and study on the space of phylogenetic trees, we encourage readers to follow the refereces mentioned at the beginning of the section. 
+        
+        
+        
+        
+        
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

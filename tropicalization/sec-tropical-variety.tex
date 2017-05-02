@@ -1,0 +1,66 @@
+\section{Tropical Variety}
+\label{sec:tropical-variety}
+	Let $K[x_1^{\pm1}, \ldots, x_n^{\pm1}]$ 
+	denote the ring of \textbf{Laurent polynomials} over $K$.
+	Thus an arbitrary 
+	Laurent polynomial $f \in K[x_1^{\pm1}, \ldots, x_n^{\pm1}]$ is 
+	in the form 
+	\[
+	f = \sum\limits_{\mathbf{u} \in \Z^n} c_{\mathbf{u}}x^{\mathbf{u}}
+	\]
+	\begin{definition}[\citet{Maclagan2015}]
+		Given a valuation,
+		the \textbf{tropicalization} 
+		\[
+		\trop(f)(w) = \min\limits_{u \in \Z^n} (\val(c_\mathbf{u} + \sum\limits_{i = 1}^{n} u_i w_i)).
+		\] 
+		is a piecewise, linear, real-valued function
+		$f: \R^{n+1} \rightarrow \R$ 
+		that is obtained by replacing each coefficients $c_{\mathbf{u}}$ 
+		by its valuation and 
+		by performing all additions and multiplications 
+		in the tropical semiring $(\R, \oplus, \odot)$.
+	\end{definition}
+	
+	The variety of the Laurent polynomial $f \in K[x_1^{\pm 1}, \ldots, x_n^{\pm 1}]$ 
+	is a hypersurface in the algebraic torus $T^n$ over the algebraically 
+	closed field $K$:
+	\[
+	V(f) = \{ y \in T^n: f(y) = 0 \}.
+	\]
+	We can check that in fact $\trop(V(f)) = V(\trop(f))$.
+	
+	\begin{example}[A Tropical Line]
+		We have seen this example in previous chapter.
+		Let $f =  x + y + 42$. 
+		Then $\trop(f) = \min(x, y, 0)$ since any constant is mapped 
+		to $0$ under the canonical valuation.
+		Thus we have 
+		\[
+		\trop(V(f)) = \{x = y \le 0\} \cup \{x = 0 \le y\} \cup \{y = 0 \le x \}.
+		\]
+		Since this tropical variety has degree of only $1$,
+		we call it a \textbf{tropical line}, 
+		shown in the next figure. 
+		This result is consistent with our result from the tropical 
+		plane curve section.
+	\end{example}
+	
+	Now we make an important connection between 
+	the polyhedral geometry of tropical hypersurfaces,
+	and the tropical varieties. 
+	\begin{proposition}
+		Let $f \in K[x_1^{\pm 1}, \ldots, x_n^{\pm 1}]$ 
+		be a Laurent polynomial.
+		The tropical hypersurface $\trop(V(f))$ is the support of
+		a pure $\Gamma_{\val}$-rational polyhedral complex 
+		of dimension $n - 1 \in \R^n$.
+		It is also the $(n -1)$-skeleton of the polyhedral complex 
+		dual to a regular subdivision of the Newton polytope of 
+		\[
+		f = \sum c_\mathbf{u} x^\mathbf{u}
+		\]
+		given by the weights $\val(c_\mathbf{u})$ on the lattice points
+		in the Newton polytope of $f$. 
+	\end{proposition}
+	This description of tropical varieties plays an important role in geometric tropicalization as we will see in later chapter. 
