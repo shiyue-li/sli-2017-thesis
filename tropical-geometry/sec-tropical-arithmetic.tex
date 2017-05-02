@@ -1,0 +1,150 @@
+\section{Tropical Arithmetic, Valuations and Tropical Plane Curves}
+\label{sec:tropical-arithmetic-valuations-tropical-plane-curves}
+    Tropical plane curves are degeneration of algebraic curves through 
+    tropical geometry. 
+    By degenerating smooth curves in the limits, we obtain singular curves
+    with many irreducible components and rich combinatorial structure. 
+    In 1971, the work of \citet{Bergman1971} started such discussion on singular curves,
+    which only in hindsight did people realize this sets the foundation for 
+    tropical geometry. 
+    Later on, people became interested in families of such tropical curves,
+    which sit in the intersection of classical algebraic geometry 
+    and tropical geometry: 
+    the \emph{tropical moduli space of curves} 
+    and its compactification problems
+    (in particular Deligne-Mumford compactification by stable curves).
+    We will gradually see the connection as we move along.
+    Here we will follow this historical line 
+    for our study of tropical plane curves,
+    moving from studying plane curves 
+    to studing these curves abstractly,
+    without referring to particular embeddings 
+    in the affine or projective space.
+    
+    Let $K$ be a field and $K^\ast = K \setminus \{0\}$.
+    The natural setting for tropical geometry is over 
+    \emph{nonarchimedean fields}. 
+    \begin{definition}[Nonarchimedean Valuation]
+    	A \textbf{nonarchimedean valuation } on $K$ is a map 
+	$v: K^\ast \rightarrow \R$ that satisfies:
+	\begin{enumerate}
+		\item[(1)]
+		$v(ab) = v(a) + v(b)$ and 
+		\item[(2)]
+		$v(a+b) \ge \min(v(a), v(b))$.
+	\end{enumerate}
+	for all $a, b \in K^\ast$. 
+	By convention, we may extend $v$ to $K$ by setting $v(0) = \infty$.
+    \end{definition}
+    The ring $R \subseteq K$ of elements with nonnegative valuation 
+    is the \emph{valuation ring} of $K$.
+    The readers may check that $R$ is a local ring and 
+    we let $k = R/\mathfrak{m}$ for its residue field. 
+    
+    \begin{remark}
+    	The valuation is called nonarchimedean because 
+	the axiom of Archimedes do not hold on the image of the map.
+	The axiom of Archimedes states that 
+	for an ordered field $\F$ (in our case $\R$),
+	if for $x, y \in \F$ and $x, y > 0$, there exists $n \in \N$ such that 
+	$nx > y$. 
+	This axiom allows infinitely large and infinitely small elements to exist
+	in the field. 
+    \end{remark}
+    
+    Let us look at an example that explores some property of the valuation. 
+    \begin{example}
+    	Let $a, b \in K$. If $v(a) \ne v(b)$, then
+	\[
+	v(a + b) = \min(v(a), v(b)).
+	\]
+	In other words, 
+	for all $a, b \in K$,
+	the minimum of $v(a), v(b), v(a + b)$ occurs at least twice
+	amongst the three.
+
+	We first discover following properties:
+	\begin{enumerate}
+		\item[(1)] $v(1) = 0$. For any $x \in K$, $v(x) = v(x \cdot 1) = v(x) + v(1) \Leftrightarrow v(1) = 0$. 
+		\item[(2)] $v(-1) = v(1) = 0$. Since $v(1) = v(-1) \cdot v(-1) = 2v(-1) = 0 \Leftrightarrow v(-1) = v(1) = 0$.
+		\item[(3)] $v(-x) = v(x)$ for all $x \in K$, since $v(-x) = v(-1 \cdot x) = v(-1) + v(x) = v(x)$.
+	\end{enumerate}
+	Without loss of generality, we may assume $v(a) < v(b)$.
+	Then we have 
+	\[
+	v(a) = v(a + b - b) = v((a+b) - b) \ge \min(v(a+ b), v(-b)) = \min(v(a+b), v(b)).
+	\]
+	However, by assumption $v(a) < v(b)$ so $v(a)$ can only be greater or equal to $v(a+b)$. 
+	Thus $v(a) \ge v(a+b) \ge \min(v(a), v(b)) = v(a)$.
+	Therefore, $v(a + b) = v(a)$, the smaller of the two. 
+    \end{example}
+    
+    \begin{example}[A Tropical Line]
+    	Let $f(x, y) = x + y - 42$ and let $X = V(f)$. 
+	    We can see that $X$ is $\P^1$ minus $3$ points (why?) 
+	    and what is $\trop(X)$? 
+	
+	\begin{figure}
+	\begin{center}
+	\begin{tikzpicture}[
+	axis/.style={thin, ->, >=stealth'}]
+	    % Draw coordinates
+		\draw[axis] (0, 0) -- (1, 0) node[right]{$\mathbf{e}_1$};
+		\draw[axis] (0, 0) -- (0, 1)
+		node[above]{$\mathbf{e}_2$};
+		\draw[axis] (0, 0) -- (-1, -1) node[below]{$-\mathbf{e}_1 - \mathbf{e}_2$};
+	\end{tikzpicture}
+	\end{center}
+	\caption{A tropical line arisen from the polynomial $f(x, y) = x + y - 42$.}
+	\label{fig:tropical-line}
+    \end{figure}
+	
+	We want to find $x$ and $y$ such that $x + y - 42 = 0$.
+	By the previous example, we know that 
+	the minimum of $v(x), v(y),$ and $v(42)$ is attained at least twice.
+	That is the tropical curve is some creature living in $\R^2$ such that 
+	the minimum of $z = v(x), w = v(y)$ and $0 = v(42)$ is attained
+	at least twice:
+	\[
+	\trop(X) = \{(z, w) \in \R^2: \text{ the minimum of $z, w, 0$ is attained at least twice}\}.
+	\]
+	In Figure \ref{fig:tropical-line}, we see that it is three rays from the origin 
+	along the direction of $\mathbf{e}_1, \mathbf{e}_2$ and $-\mathbf{e}_1-\mathbf{e}_2$ 
+	for standard basis vector $\mathbf{e}_1, \mathbf{e}_2$. 
+    \end{example}
+   
+    A more generalized theorem of the previous two examples 
+    can be stated as a ``plane"-version of the Kapranov's Theorem:
+    \begin{theorem}
+    	Let $f: \K^2 \rightarrow \R$ be defined by
+	    \[
+	    f = \sum\limits_{(i, j) \in \Z^2} c_{ij} x^i y^j \in K[x^{\pm}, y^{\pm}].
+	    \]
+	    Then 
+	    \[
+	    \trop(X) = \{(z, w) \in \K^2: \min\limits_{(i, j) \in \Z^2} v(c_{ij}) + iz + jw \text{ is attained at least twice}\}.
+	    \]
+    \end{theorem}
+    Tropical Geometry is based on a newly defined mathematical subject: 
+    tropical semiring $(\R \cup \{\infty\}, \oplus, \odot)$.
+    The two binary operations tropical addition $\oplus$ and tropical multiplication $\otimes$ are defined as follows:
+    For $a, b \in \R \cup \{\infty\}$
+    \[
+    a \oplus b = \min{a, b},
+    a \otimes b = a + b
+    \] where the $+$ on the right hand side is conventional addition. 
+    
+    Readers can easily check that both distributivity and associativity hold for both the tropical addition and tropical multiplication.
+    In addition, we can identify $\infty$ as the additive identity and $0$ as the multiplicative identity. 
+    Therefore, we have obtain this tropical semiring as foundation of our study.
+    
+    Based on tropical arithmetic, 
+    we can define tropical polynomials and define tropical varieties similarly as in classical algebraic geometry.
+    Many important theorems such as B\'{e}zout Theorem in classical algebraic geometry hold. 
+    The process of
+    compactifying of a space, 
+    which is needed in many techniques in algebraic geometry such as intersection theory,
+    can also find a nice tropical version of it.
+    In this thesis, 
+    our center of focus is going to be studying compactification of moduli spaces called Hassett spaces, 
+    under tropical setting.

@@ -1,0 +1,185 @@
+\section{Sheaves and Schemes}
+\label{sec:sheaves-and-schemes}
+	The theory of schemes played a major role in number theory 
+	and solving a major series conjectures 
+	such as ``Weil Conjectures" 
+	after Grothendieck developed 
+	the major foundations of scheme theory toolkits,
+	aiming at these conjectures by Andr\'{e} Weil. 
+	Another recent application of scheme theory is 
+	the proof of Mordell Conjecture,
+	whose statement is fairly easy to say:
+	
+	\begin{theorem}[Mordell Conjecture, proved by Faltings]
+		A curve of genus greater than $1$ over 
+		the field $\Q$ of rational numbers has 
+		only finitely many rational points.
+	\end{theorem}
+	
+	Scheme-theoretic tools have a larger than ever presence in classical 
+	algebraic geometry as well:
+	one has the development of the theory of moduli of curves,
+	including the resolution of the Brill-Noether-Petri problems. 
+	For a more self-contained treatment of scheme theory,
+	we recommend \emph{The Geometry of Schemes}
+	by \citet{Eisenbud2000},
+	some examples of which are walked through in this chapter.
+	Hartshorne's classic algebraic geometry textbook,
+	\emph{Algebraic Geometry} also serves
+	as a comprehensive treatment. 
+	
+	At some point in history of algebraic geometry,
+	we want to think of spaces in terms of the functions living over them. 	So we need to find a sensible notion of functions on 
+	sets of common zeros of a collection of polynomials.
+
+	We start this very brief treatment with basic definition.
+	\begin{definition}[Spectrum of $R$]
+	    Let $R$ be a commutative ring.
+		The affine scheme defined from $R$ is $\spec R$,
+		\textbf{spectrum} of $R$.
+		We define a \textbf{point} of $\spec R$ to be a prime;
+		that is, $\spec R$ is the set of prime ideals of $R$.
+	\end{definition}
+	
+	\begin{example}[$\spec \Z$]
+		The $\spec \Z = \{p | p \text{ is a prime number}\}$.
+	\end{example}
+	
+	We can view each element $f \in R$ as a function, 
+	on the space $\spec R$.
+	If $x = [\mathfrak{p}] \in \spec R$,
+	we denote $\kappa(x)$ or $\kappa(\mathfrak{p})$ 
+	as the quotient field of the integral domain $R/\mathfrak{p}$,
+	or the residue field of $R$ at $x$. 
+	
+	\begin{example}[Primes in $\C(X)$]
+	Let $\alpha \in \C$.
+	We claim that $(x - \alpha) \in \C[x]$ is prime,
+	because for any $f \in \C[x]$ if $(x - \alpha) | f$,
+	$f = (x - \alpha) g$ for some $g \in \C[x]$ and $\deg(g) < \deg(f)$.
+	We say that the value $p(x)$ at point $(x - \alpha) \in \spec C[x]$
+	is the number $p(\alpha)$. 
+	\end{example}
+	From this example, we see that point in $\C$ as an affine space,
+	has a one to one correspondence with prime ideals of $\C[x]$.
+	
+	\begin{definition}[Zariski topology on $\spec R$]
+		The Zariski topology defined on $\spec R$ is defined 
+		using the following definition of closed sets 
+		given a subset $S \subset R$
+		\[
+		V(S) = \{x \in \spec R | f(x) = 0 \text{ for all } f \in S\}
+		\]
+	\end{definition}
+	
+	
+	\begin{definition}
+		Let $X$ be an topological space.
+		A presheaf $\scf$ on $X$ assigns to each open set $U$ 
+		in $X$ a set, 
+		detnoted as $\scf(U)$,
+		and to every pair of nested open sets 
+		$U \subset V \subset X$ a restriction map 
+		\[
+		\res_{U, V}: \scf(V) \rightarrow \scf(U).
+		\]
+		satisfying the basic properties that 
+		\[
+		res_{U, U} = \id
+		\]
+		and 
+		\[
+		\res_{V, U} \circ \res_{W, V} = \res_{W, U}
+		\]
+		for all $U \subset V \subset W \subset X$. 
+	\end{definition}
+	We call the elements of a $\scf(U)$ the sections of $\scf$ over $U$.
+	A sheaf is also conssidered to be a contravariant functor 
+	from the category of open sets in $X$ 
+	(with the morphism $U \rightarrow V$ 
+	for each containment $U \subseteq V)$
+	to the category of sets. 
+	
+	\begin{definition}[Sheaf]
+	A presheaf (of sets, abelian groups, rings, modules, 
+	and so on) is called a \textbf{sheaf} 
+	if it satisfies one further condition,
+	called the \textbf{sheaf axiom}:
+	for each open covering 
+	$U = \cup_{a \in A} U_a$ of an open set $U \subset X$ 
+	and each collection of elements 
+	\[
+	f_a \in \scf(U_a) 
+	\]
+	for each $a \in A$
+	having the property that for all $a, b \in A$ 
+	the restrictions of $f_a$ and $f_b$ to $U_a \cap U_b$ 
+	are equal,
+	tehre is a unique element $f \in \scf(U)$ whose restriction to $U_a$ 
+	is $f_a$ for all $a$. 
+	\end{definition}
+	
+	\begin{example}[The Set $\{0,1\}$]
+		Let $X$ be $\{0,1\}$ with the discrete topology.
+		A sheaf is a collection of four sets with functions 
+		describing their relations between them.
+		$X$ can be also seen as the $\spec R$ for $\Z/2\Z$. 
+	\end{example}
+	
+	\begin{definition}[Scheme]
+	A \textbf{scheme} $X$ is a topological space, 
+	called the \textbf{support} of $X$ 
+	and denoted $|X|$ or $\supp X$,
+	together with a sheaf $\sco_X$ of rings on $X$,
+	such that the pair $(|X|, \sco_X)$ is \textbf{locally affine}.
+	\end{definition}
+	Here, \textbf{locally affine} means that $|X|$ is covered
+	by open sets $U_i$ such that there exists rings $R_i$
+	and homeomorphisms $U_i \cong |\spec R_i|$ 
+	with $\sco_X|_{U_i} \cong \sco_{\spec R}$.
+	We usually call the pair $(X, \sco)$ a ringed space. 
+	
+	Roughly, an affine scheme is a locally ringed space 
+	which is locally isomorphic to the spectrum of some ring.
+        A scheme is a locally ringed space 
+        in which every point has a neighborhood that is an affine scheme.
+        In addition,
+        there is in fact a faithful functor such that 
+        affine varieties are faithfully embedded into the category of schemes.
+        The idea of this theory is the following, 
+        which may give the readers some intuition:
+        given a variety paired with a sheaf of rings on $X$, 
+        $(X, \sco_X)$ with the coordinate ring 
+        $A(X) = A/I(X)$,
+        where $I(X)$ contains differences of polynomials in $A$ 
+        that vanish on $X$,
+        we have the following isomorphism:
+        \[
+        \phi: (X, \sco_X) \rightarrow (\spec A(X)), \sco_{\spec A(X))}
+        \]
+        from the variety to the spectrum of its coordinate ring.
+        The isomorphism consists of a homeomorphism between space,
+        and an isomorphism of sheaves:
+        \begin{enumerate}
+        \item[(a)]
+        	 	The homeomorphism 
+         	\[
+        	 	f: X \rightarrow \spec A(X) 
+         	\]
+         	defined by 
+         	\[
+         	f: p \rightarrow \text{ the prime ideal of regular functions that vanish at $p$}
+         	\]
+	
+    	\item[(b)]
+		The isomorphism of sheaves 
+		\[
+		g: \sco_X \leftarrow \sco_{\spec A(X)}
+		\]
+		by sending every regular function $s$ on $\spec A(X)$
+		to the regular function on $X$ 
+		by simply identifying the sections 
+		that agree on the each individual point in $X$. 
+        \end{enumerate}
+         
+        We will use the word varieties and schemes interchangeably later in the manuscript. The langauge of schemes will also appear in our survey on Intersection Theory and boundary stratifications of varieties. 

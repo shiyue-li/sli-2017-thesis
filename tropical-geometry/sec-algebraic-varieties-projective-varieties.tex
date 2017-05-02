@@ -1,0 +1,189 @@
+\section{Algebraic Varieties and Projective Varieties} 
+\label{sec:algebraic-varieties-and-projective-varieties}
+   In very short words, classical algebraic geometry is a study of zero loci of polynomials. 
+   Given a family of polynomials, 
+   an algebraic variety is, despite its name, a geometric object 
+   that describes all the points in a space that vanish on 
+   all the polynomials in the family.
+   Throughout the section, 
+   we let $k$ be a fixed algebraically closed field.
+   We are following the treatment of \citet{Hartshorne1977}.
+   
+   \begin{definition}[Affine $n$-space set]
+	We define \textbf{affine $n$-space} over $k$,
+	denoted $\A_n^k$ or simply $\A^n$,
+	to be the set of all $n$-tuples of elements of $k$.
+	An element $P \in \A^n$ will be called a \textbf{point},
+	and if $P = \{a_1, \ldots, a_n\}$ with $a_i \in k_i$,
+	then the $a_i$ will be called the \emph{coordinates} of $P$.
+   \end{definition}
+   
+   For this section, we keep the following notations:
+   Let $A = k[x_1, \ldots, x_n]$ be the polynomial ring in $n$ variables 
+   over $k$.
+   For a polynomial $f \in A$, we can define the zeros of $f$ as follows:
+   \[
+   Z(f) = \{P \in \A^n | f(P) = 0\}
+   \] where $P = (a_1, \ldots, a_n), a_i \in k$.
+   To extend the definition of ``zero set" when given a family 
+   of polynomials $T \subseteq A$,
+   we have 
+   \[
+   Z(T)  = \{P \in \A^n | f(P) = 0 \text{ for all } f \in T\}. 
+   \]
+   
+   \begin{example}
+   	If $f = 0 \in A = k[x]$, $Z(f) = \A$. 
+   \end{example}
+   
+   \begin{example}
+   	If $f = \alpha \in \C \setminus \{0\}$, $Z(f) = \varnothing$. 
+   \end{example}
+   
+   \begin{example}
+   	Let $\A = \C$, $A = k[x, y]$.
+	Let $f \in A$ be $x^2 + y^2 - 1$.
+	Then we can see that $Z(f)$ is the unit circle in the $\C^2$.
+   \end{example}
+   
+   \begin{example}
+   	Let $a$ be an ideal of $A$, then 
+	\[
+	Z(a) = \{P \in \A^n | f(P) = 0 \text{ for all } f \in T\}. 
+	\]
+   \end{example}
+   
+   \begin{definition}[Algebraic Set]
+   	A subset $Y$ of $\A^n$ is an \textbf{algebraic set} 
+	if there exists a subset $T \subseteq A$ such that 
+	$Y = Z(T)$. 	
+   \end{definition}
+   
+   Given two algebraic sets $Y_1, Y_2$ such that 
+   $Y_1 = Z(T_1), Y_2 = Z(T_2)$ for some $T_1, T_2 \subseteq A$,
+   then the $Y_1 \cup Y_2$ is precisely the points that vanish 
+   polynomials either in $T_1$ or in $T_2$,
+   which can be described mathematically as 
+   $Y_1 \cup Y_2 = Z(T_1 T_2)$
+   where $T_1 T_2 = \{fg | f \in T_1, g \in T_2\}$.
+   Similarly, if $Y_\alpha = Z(T_\alpha)$ is the algebraic set of 
+   any family of polynomials for some arbitrary index $\alpha$,
+   then $\cap Y_\alpha = Z(\cup T_\alpha)$. 
+   Every point in $\A^n$ vanish on empty set of polynomials,
+   thus $\A^n = Z(\varnothing)$. 
+   All the above can be summarized in the following proposition.
+   
+   \begin{proposition}
+   	The union of two algebraic sets is an algebraic set. 
+	The intersection of any family of algebraic sets is an algebraic set.
+	The empty set and the whole space are algebraic sets.
+   \end{proposition}
+   
+   The above notion of taking union and arbitrary intersection 
+   resembles the axioms of a topology on a topological space. 
+   \begin{definition}[Zariski Topology]
+   	The \textbf{Zariski Topology} has the complements of the algebraic sets as its open sets. 
+   \end{definition}
+   We leave it to the readers to check that 
+   the collection of complements of the algebraic sets is a topology 
+   using the axioms. 
+   The process should be similar to the above proposition. 
+   
+   \begin{definition}[Irreducible]
+   	A nonempty subset $Y$ of a topological space $X$ is irreducible 
+	if it cannot be expressed as the union of $Y = Y_1 \cup Y_2$
+	of two proper subsets,
+	each one of which is closed in $Y$.
+	The empty set is not consider to be irreducible.
+   \end{definition}
+   
+   As an exercise we can prove show that 
+   \begin{proposition}
+   	Any nonemepty open subset of an irreducible space is irreducible
+	and dense. 
+   \end{proposition}
+   
+   \begin{proof}
+	Let $X$ be an irreducible topological space.
+	Assume for contradiction that 
+	there exists a non-empty $U$ 
+	such that $\overline{U} \ne Y$,
+	then we can write $X = (\overline{U})^c \overline{U}$, 
+	contradicting the fact that $X$ is irreducible. 
+
+	Assume for contradiction that 
+	$U$ is a nonempty open set in $X$.
+	We can write $U = A \cup B$ where 
+	$A, B$ are closed in $U$. 
+	Since $U$ is dense, 
+	$\overline{U} = \overline{A \cup B} = \overline{A} \cup \overline{B} = X$.
+	Since $X$ is irreducible, 
+	$\overline{A} = X$ without loss of generality.
+	Since $A$ is closed in $U$, 
+	$\overline{A} = \overline{A} \cap U = X \cap U = U$ and $A = U$.
+	Therefore, $U$ cannot be written 
+	as union of proper nonempty closed subsets, 
+	hence irreducible. 			
+   \end{proof}
+   
+   \begin{example}
+   	Consider the algebraic set $Z(xy) \subseteq \A_{\C}^n$ .
+	The locus consists of the $x$-axis and the $y$-axis
+	and can be expressed as 
+	\[
+	Z(xy) = Z(x) \cup Z(y),
+	\]
+	where $Z(x)$ and $Z(y)$ are both closed in $Y$. 
+	Thus this algebraic set is not irreducible.. 
+   \end{example}
+   
+   \begin{definition}[Affine Algebraic Variety]
+   	An \textbf{affine algebraic variety} (or \textbf{affine variety})
+	is an irreducible closed subset of $\A^n$ under Zariski topology.
+	An open subset of an affine variety is \textbf{quasi-affine variety}.
+   \end{definition}
+   
+   A natural questions to ask 
+   when given a geometric or topological space is:
+   ``what is a good compactification of the space?"
+   For an affine space $\A^n$, 
+   a natural compactification is the projective space $\P^n$.
+   But why? 
+   Here is a thought experiement that leads to this intuition.
+   Consider two lines in $\A^2$ space,
+   and calculate the tangent value of the angle $\theta$ at their intersection
+   if they intersect.
+   If the two lines entirely overlap, $\tan(\theta) = 0$;
+   if the two lines intersect at finitely many points, $-\infty < \tan(\theta) < \infty$.
+   But if the two lines are parallel to each other,
+   $\tan(\theta) = \infty$, whose information is not in the affine space;
+   we lose the limit of infinity in the affine space. 
+   For each affine space, we ``add the points of infinity" at the end.
+   
+   \begin{definition}[Projective $n$-space]
+   	We define \textbf{projective $n$-space} over $k$,
+	denoted $\P_k^n$, or simply $\P^n$,
+	to be the set of equivalence classes of $(n + 1)$-tuples
+	$(a_0, \ldots, a_n)$ of elements of $k$, 
+	not all zero,
+	under the equivalence relation given by 
+	$(a_0, \ldots, a_n) \sim (\lambda a_0, \ldots, \lambda a_n)$ 
+	for all $\lambda \in k$, $\lambda \ne 0$. 
+   \end{definition} 
+   
+   Similarly as in the affine $n$-space,
+   we can have concepts of algebraic set, irreducible algebraic sets
+   (algebraic varieties) and Zariski topology on the projective space.
+   
+   \begin{definition}[Projective Algebraic Variety]
+   	A \textbf{projective algebraic variety} (or simply \textbf{projective variety}) is an irreducible algebraic set in $\P^n$, 
+	with the induced topology.
+	An open subset of a projective variety is a 
+	\textbf{quasi-projective variety}.
+	The dimension of a projective or quasi-projective variety 
+	is its dimension as a topological space.
+   \end{definition}
+   
+   Algebraic varieties and projective varieties are sometimes referred to as 
+   algebraic curves or projective algebraic curves,
+   which people use interchangeably. 
